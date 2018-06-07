@@ -1,7 +1,7 @@
 <ion-menu [content]="content">
     <ion-header>
         <ion-toolbar>
-            <ion-title>Pages</ion-title>
+            <ion-title>Dashboard</ion-title>
         </ion-toolbar>
     </ion-header>
 
@@ -12,6 +12,13 @@
             </button>
         </ion-list>
     </ion-content>
+    <ion-footer>
+        <ion-buttons end>
+            <button ion-button title="logout" menuToggle (click)="logout()">
+                <ion-icon name="log-out"></ion-icon>
+            </button>
+        </ion-buttons>
 
+    </ion-footer>
 </ion-menu>
 <ion-nav #content [root]="rootPage" swipeBackEnabled="false"></ion-nav>

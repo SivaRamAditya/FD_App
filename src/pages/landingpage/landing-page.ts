@@ -11,7 +11,7 @@ export class LandingPage {
    constructor(public navCtrl: NavController) {}
 
    redirectToLogin() {
-       this.navCtrl.push('LoginPage');
+       this.navCtrl.setRoot('LoginPage');
    }
 
    signup() {

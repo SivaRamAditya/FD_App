@@ -5,10 +5,12 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 @Injectable()
 export class Auth {
     authNotifier: ReplaySubject<boolean>;
+    validSession: boolean = false;
     constructor(private storage: Storage) {
         this.authNotifier = new ReplaySubject<boolean>(1);
         storage.ready().then(() => storage.get('sessionId')).then((response) => {
-            this.authNotifier.next(this.isValid(response));
+            this.validSession = this.isValid(response);
+            this.authNotifier.next(this.validSession);            
         });
     }
 
@@ -21,9 +23,11 @@ export class Auth {
 
     setSession(sessionId: string): void {
         this.storage.set('sessionId',sessionId);
+        this.validSession = true;
     }
 
     clearSession(): void {
         this.storage.clear();
+        this.validSession = false;
     }
 }

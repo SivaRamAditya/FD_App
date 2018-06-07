@@ -47,12 +47,4 @@ export class LoginPage {
       toast.present();
     });
   }
-
-  //need to remove just for testing...
-  ionViewCanEnter(): boolean {
-    // here we can either return true or false
-    // depending on if we want to leave this view
-    console.log('ionViewCanEnter');
-    return true;
-   }
 }

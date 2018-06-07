@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonicPage, Nav, ToastController } from 'ionic-angular';
-import { User, Permission } from '../../providers';
+import { User, Permission, Auth } from '../../providers';
 import { SideMenuItems } from '../../models/';
 
 @IonicPage()
@@ -12,7 +12,7 @@ export class HomePage implements OnInit {
   @ViewChild(Nav) nav: Nav;
   pages: any[] = [];
   rootPage: any;
-  constructor(private userSvc: User, private toastCtrl: ToastController, private permission: Permission) { }
+  constructor(private auth: Auth, private userSvc: User, private toastCtrl: ToastController, private permission: Permission) { }
   ngOnInit(): void {
     this.userSvc.getUserInformation().subscribe((res: any) => {
       /**
@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
           this.updateSideMenuItems(res);
         }
       }, (error) => {
-        let toast = this.toastCtrl.create({
+        const toast = this.toastCtrl.create({
           message: 'Unable to get the permissions',
           duration: 3000,
           position: 'top'
@@ -31,7 +31,7 @@ export class HomePage implements OnInit {
         toast.present();
       });
     }, (error) => {
-      let toast = this.toastCtrl.create({
+      const toast = this.toastCtrl.create({
         message: 'Unable to get the user information',
         duration: 3000,
         position: 'top'
@@ -71,5 +71,14 @@ export class HomePage implements OnInit {
     if (this.permission.hasPermission(page.permission)) {
       this.nav.setRoot(page.component);
     }
+  }
+
+  logout(): void {
+    this.auth.clearSession();
+    this.nav.setRoot('LandingPage');
+  }
+
+  ionViewCanEnter() {
+    return this.auth.validSession;
   }
 }
