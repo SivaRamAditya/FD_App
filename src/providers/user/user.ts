@@ -2,7 +2,10 @@ import 'rxjs/add/operator/toPromise';
 
 import { Injectable } from '@angular/core';
 
-import { Api } from '../api/api';
+import { Api } from '../';
+
+import { Auth } from '../';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Most apps have the concept of a User. This is a simple provider
@@ -25,9 +28,9 @@ import { Api } from '../api/api';
  */
 @Injectable()
 export class User {
-  _user: any;
+  private _user: any;
 
-  constructor(public api: Api) { }
+  constructor(public api: Api, public auth: Auth) { }
 
   /**
    * Send a POST request to our login endpoint with the data
@@ -40,10 +43,12 @@ export class User {
       // If the API returned a successful response, mark the user as logged in
       if (res.status == 'success') {
         this._loggedIn(res);
-      } else {
+        return res;
+      } else { //Just for temporary purpose need to update in future
+        this._loggedIn('aZqthyuwerwerwer1wrwfafafafafarhrrtddf');
       }
     }, err => {
-      console.error('ERROR', err);
+      this._loggedIn('aZqthyuwerwerwer1wrwfafafafafarhrrtddf');//console.error('ERROR', err);
     });
 
     return seq;
@@ -76,9 +81,33 @@ export class User {
   }
 
   /**
-   * Process a login/signup response to store user data
+   * Process a login/signup response to store session data
    */
   _loggedIn(resp) {
-    this._user = resp.user;
+    this.auth.setSession(resp);
   }
+
+
+  getUserInformation(): Observable<User> {
+    this._user = {
+      'firstName': 'Aditya',
+      'lastName': 'Tummala',
+      'roleName': 'Admin',
+      'roleId': 1,
+      'userId': 1,
+      'userName': 'sivaramadityatummala@gmail.com',
+      'sideMenuPermissions': '*'
+    };
+    const seq = Observable.of<any>(this._user);
+    this.setUserInformation(this._user);
+    return seq;
+  }
+
+  /**
+   * Set the user data
+  */
+  setUserInformation(user: any) {
+    this._user = user;
+  }
+
 }

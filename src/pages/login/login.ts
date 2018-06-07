@@ -35,9 +35,9 @@ export class LoginPage {
   // Attempt to login in through our User service
   doLogin() {
     this.user.login(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
+      this.navCtrl.setRoot(MainPage);
     }, (err) => {
-      this.navCtrl.push(MainPage);
+      this.navCtrl.setRoot(MainPage);
       // Unable to log in
       let toast = this.toastCtrl.create({
         message: this.loginErrorString,
@@ -47,4 +47,12 @@ export class LoginPage {
       toast.present();
     });
   }
+
+  //need to remove just for testing...
+  ionViewCanEnter(): boolean {
+    // here we can either return true or false
+    // depending on if we want to leave this view
+    console.log('ionViewCanEnter');
+    return true;
+   }
 }

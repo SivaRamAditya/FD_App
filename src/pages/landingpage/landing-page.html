@@ -1,0 +1,21 @@
+<ion-header>
+
+    <ion-navbar>
+        <img src="./assets/img/IL_Logo.jpg" />
+        <ion-buttons end>
+            <!-- <button ion-button (click)="signup()" icon-only outline color="secondary" title="{{ 'SIGNUP' | translate }}">
+                    <ion-icon name="add-circle"></ion-icon>
+                </button> -->
+            <button ion-button (click)="redirectToLogin()" icon-only outline class="login" title="{{ 'LOGIN' | translate }}">
+                <ion-icon name="log-in"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-title>
+        <h1>{{ 'LANDINGPAGE_TITLE' | translate }}</h1>
+    </ion-title>
+    <div class="content"><h2>Welcome</h2> to Stock And Inventory Management Website.</div>
+</ion-content>

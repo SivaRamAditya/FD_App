@@ -17,7 +17,11 @@ export class WelcomePage {
   constructor(public navCtrl: NavController) { }
 
   login() {
-    this.navCtrl.push('LoginPage');
+    try {
+     this.navCtrl.push('LoginPage');
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   signup() {
