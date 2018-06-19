@@ -6,6 +6,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 export class Auth {
     authNotifier: ReplaySubject<boolean>;
     validSession: boolean = false;
+    callBack: Function;
     constructor(private storage: Storage) {
         this.authNotifier = new ReplaySubject<boolean>(1);
         storage.ready().then(() => storage.get('sessionId')).then((response) => {

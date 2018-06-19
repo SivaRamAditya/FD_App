@@ -8,7 +8,7 @@ export class Permission {
     constructor(private api: Api) { }
 
     getPermissions(userId: number): Observable<any> {
-        this.pagePermissionSet = ['users.view', 'users.add', 'users.edit', 'users.delete', 'listmaster.view', 'cards.view', 'tabs.view', 'tabs.edit', 'tabs.add', 'search.view', 'content.view'];
+        this.pagePermissionSet = ['users.view', 'users.add', 'users.edit', 'users.delete', 'listmaster.view', 'cards.view', 'roles.view', 'roles.edit', 'roles.add', 'search.view', 'content.view'];
         const api = Observable.of(true);
         return api;
     }

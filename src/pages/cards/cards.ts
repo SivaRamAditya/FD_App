@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
+import { Auth } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -9,7 +10,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 export class CardsPage {
   cardItems: any[];
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private auth: Auth) {
     this.cardItems = [
       {
         user: {
@@ -40,5 +41,9 @@ export class CardsPage {
       }
     ];
 
+  }
+  
+  ionViewCanEnter() {
+    return this.auth.validSession;
   }
 }
