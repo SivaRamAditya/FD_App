@@ -1,7 +1,7 @@
 export const SideMenuItems = {
   pages: [
     // { title: 'Tutorial', component: 'TutorialPage', default: false, visible: false },
-    // { title: 'Welcome', component: 'WelcomePage', default: false, visible: false },
+     { title: 'Roles', component: 'RolesPage', permission: 'roles.view', default: false, visible: false },
     { title: 'Cards', component: 'CardsPage', permission: 'cards.view', default: false, visible: false },
     { title: 'Tabs', component: 'TabsPage', permission: 'tabs.view', default: false, visible: false },
     { title: 'Content', component: 'ContentPage', permission: 'content.view', default: false, visible: false },
