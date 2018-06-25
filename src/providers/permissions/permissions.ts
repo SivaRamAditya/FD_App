@@ -3,27 +3,16 @@ import { Api } from '../';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class Permission {
-    pagePermissionSet: any[];
+export class Permissions {
     constructor(private api: Api) { }
-
     getPermissions(userId: number): Observable<any> {
-        this.pagePermissionSet = ['users.view', 'users.add', 'users.edit', 'users.delete', 'listmaster.view', 'cards.view', 'roles.view', 'roles.edit', 'roles.add', 'search.view', 'content.view'];
-        const api = Observable.of(true);
+        let permissionSet = [
+            { 'id': '1', 'name': 'Users', 'isCreate': true, 'isEdit': true, 'isDelete': true, 'isView': true, 'createdDate': new Date(2018, 5, 1) },
+            { 'id': '2', 'name': 'Roles', 'isCreate': true, 'isEdit': true, 'isDelete': true, 'isView': true, 'createdDate': new Date(2018, 5, 1) },
+            { 'id': '3', 'name': 'Permissions', 'isCreate': true, 'isEdit': true, 'isDelete': true, 'isView': true, 'createdDate': new Date(2018, 5, 1) },
+            { 'id': '4', 'name': 'Party', 'isCreate': true, 'isEdit': true, 'isDelete': true, 'isView': true, 'createdDate': new Date(2018, 5, 1) },
+        ];
+        const api = Observable.of(permissionSet);
         return api;
     }
-
-    hasPermission(permission: any): boolean {
-        let result = false;
-        if (this.pagePermissionSet && this.pagePermissionSet.length > 0) {
-            for (let index = 0; index < this.pagePermissionSet.length; index++) {
-                if (this.pagePermissionSet[index].trim().toLowerCase() === permission) {
-                   result = true;
-                   break;
-                }
-            }
-        }
-        return result;
-    }
-
 }

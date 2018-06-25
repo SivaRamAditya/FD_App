@@ -10,6 +10,7 @@ export const SideMenuItems = {
     { title: 'Master Detail', component: 'ListMasterPage', permission: 'listmaster.view', default: true, visible: false },
     { title: 'Menu', component: 'MenuPage', permission: 'menu.view', default: false, visible: false },
     { title: 'Settings', component: 'SettingsPage', permission: 'settings.view', default: false, visible: false },
-    { title: 'Search', component: 'SearchPage', permission: 'search.view', default: false, visible: false }
+    { title: 'Search', component: 'SearchPage', permission: 'search.view', default: false, visible: false },
+    //{ title: 'Role Details', component: 'RoleDetailsPage', permission: 'roledetails.view', default: false, visible: false }
   ]
 };

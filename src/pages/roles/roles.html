@@ -1,25 +1,27 @@
 <ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu" icon-only></ion-icon>
-        </button>
-        <ion-title>{{ 'ROLES_TITLE' | translate }}</ion-title>
-    </ion-navbar>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu" icon-only></ion-icon>
+		</button>
+		<ion-title>{{ 'ROLES_TITLE' | translate }}</ion-title>
+	</ion-navbar>
 </ion-header>
 <ion-content>
-    <ion-row>
+	<ion-row>
 		<ion-col *ngFor="let role of roles" col-sm-4 col-md-4>
 			<ion-card>
 				<ion-card-header>
 					<ion-row>
 						<ion-col>
-							<ion-label><b>{{role.roleName}}</b></ion-label>
+							<ion-label>
+								<b>{{role.roleName}}</b>
+							</ion-label>
 						</ion-col>
 						<ion-col>
 							<ion-buttons end>
-								<button ion-button color="light" small>            
-                  <ion-icon name="create"></ion-icon>
-                </button>
+								<button ion-button color="light" small>
+									<ion-icon name="create"></ion-icon>
+								</button>
 							</ion-buttons>
 						</ion-col>
 					</ion-row>
@@ -31,7 +33,7 @@
 			</ion-card>
 		</ion-col>
 	</ion-row>
-<ion-row>
-        
-    </ion-row>
+	<ion-row>
+
+	</ion-row>
 </ion-content>
