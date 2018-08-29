@@ -1,5 +1,5 @@
 import 'rxjs/add/operator/toPromise';
-
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Api } from '../';
@@ -30,7 +30,7 @@ import { Observable } from 'rxjs/Observable';
 export class User {
   private _user: any;
 
-  constructor(public api: Api, public auth: Auth) { }
+  constructor(public api: Api, public auth: Auth, private http: HttpClient) { }
 
   /**
    * Send a POST request to our login endpoint with the data
@@ -38,7 +38,7 @@ export class User {
    */
   login(accountInfo: any) {
     let seq = this.api.post('login', accountInfo).share();
-    this.api.get('https://FlawlessUsedWheel--sivaramtummala.repl.co').subscribe((response) => {
+    this.http.get('https://FlawlessUsedWheel--sivaramtummala.repl.co').subscribe((response) => {
      alert(response);
     });
     seq.subscribe((res: any) => {
