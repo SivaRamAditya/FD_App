@@ -39,9 +39,9 @@ export class User {
   login(accountInfo: any) {
     let seq = this.api.post('login', accountInfo).share();
     this.http.get('https://FlawlessUsedWheel--sivaramtummala.repl.co').subscribe((response) => {
-     alert(response);
+     alert(JSON.stringify(response));
     }, err=> {
-     alert(err);
+     alert(JSON.stringify(err));
     });
     seq.subscribe((res: any) => {
       // If the API returned a successful response, mark the user as logged in
