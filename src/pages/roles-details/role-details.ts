@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { IonicPage, NavController } from 'ionic-angular';
 import { Auth, UserPermission } from '../../providers';
 
-@IonicPage()
+
 @Component({
     selector: 'page-roles-details',
     templateUrl: 'roles-details.html'
